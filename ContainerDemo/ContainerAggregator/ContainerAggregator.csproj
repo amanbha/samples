@@ -1,0 +1,68 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+  <!--
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <NetStandardImplicitPackageVersion>2.0.0</NetStandardImplicitPackageVersion>
+    <RootNamespace>ContainerAggregator</RootNamespace>
+    <AssemblyName>ContainerAggregator</AssemblyName>
+    <PackageId>ContainerAggregator</PackageId>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    -->
+    <Description>Container aggregator Actor</Description>
+    <Authors> </Authors>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RootNamespace>ContainerAggregator</RootNamespace>
+    <AssemblyName>ContainerAggregator</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <PackageId>ContainerAggregator</PackageId>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.3.0" />
+    <PackageReference Include="Microsoft.ServiceFabric.Actors" Version="3.0.165-preview" />
+    <PackageReference Include="System.Collections" Version="4.3.0" />
+    <PackageReference Include="System.Linq" Version="4.3.0" />
+    <PackageReference Include="System.Runtime" Version="4.3.0" />
+    <PackageReference Include="System.Threading" Version="4.3.0" />
+  </ItemGroup>
+<!--
+  <ItemGroup>
+    <Compile Include="ContainerAggregatorActorService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ContainerAggregator.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="ActorEventSource.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="PackageRoot\ServiceManifest.xml" />
+    <None Include="PackageRoot\Config\Settings.xml" />
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+-->
+  <ItemGroup>
+    <ProjectReference Include="../ContainerAggregator.Interfaces/ContainerAggregator.Interfaces.csproj">
+      <Name>ContainerAggregator.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="../Microsoft.ServiceFabric.Samples.Utility/Microsoft.ServiceFabric.Samples.Utility.csproj">
+      <Name>Microsoft.ServiceFabric.Samples.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
