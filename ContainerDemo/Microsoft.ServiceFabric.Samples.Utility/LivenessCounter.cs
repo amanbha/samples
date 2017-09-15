@@ -38,7 +38,7 @@ namespace Microsoft.ServiceFabric.Samples.Utility
             this.ExtendExpiration(group, numberOfAliveItems);
         }
 
-        public ICollection<KeyValuePair<T, long>> GetKeyValues()
+        public List<KeyValuePair<T, long>> GetKeyValues()
         {
             List<KeyValuePair<T, long>> items = new List<KeyValuePair<T, long>>();
             foreach (var key in livenessEntries.Keys)

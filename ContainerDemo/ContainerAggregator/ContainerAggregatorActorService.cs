@@ -69,7 +69,7 @@ namespace ContainerAggregator
             return Task.FromResult(containerLivenessCounter.GetLivingCount());
         }
 
-        Task<ICollection<KeyValuePair<string, long>>> IContainerAggregator.GetKeyValues()
+        Task<List<KeyValuePair<string, long>>> IContainerAggregator.GetKeyValues()
         {
             return Task.FromResult(containerLivenessCounter.GetKeyValues());
         }

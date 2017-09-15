@@ -12,6 +12,6 @@ namespace Microsoft.ServiceFabric.Samples.Utility
 
         long GetLivingCount();
 
-        ICollection<KeyValuePair<T, long>> GetKeyValues();
+        List<KeyValuePair<T, long>> GetKeyValues();
     }
 }

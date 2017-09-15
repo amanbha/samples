@@ -7,7 +7,7 @@ namespace WebFront
 {
     public class ReportedResults
     {           
-        public ICollection<KeyValuePair<string, long>> GlobalReports { get; set; }
-        public ICollection<KeyValuePair<string, long>> LocalReports { get; set; }
+        public List<KeyValuePair<string, long>> GlobalReports { get; set; }
+        public List<KeyValuePair<string, long>> LocalReports { get; set; }
     }
 }

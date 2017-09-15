@@ -14,7 +14,7 @@ namespace ContainerAggregator.Interfaces
 
         Task ReportAlive(string nodeName, long aliveContainerCount);
 
-        Task<ICollection<KeyValuePair<string, long>>> GetKeyValues();
+        Task<List<KeyValuePair<string, long>>> GetKeyValues();
     }
 
     public interface IContainerAggregatorActor : IActor
