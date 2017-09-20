@@ -19,7 +19,7 @@
   <CodePackage Name="Code" Version="1.0.0">
     <EntryPoint>
       <ExeHost>
-        <Program>ContainerAggregator.sh</Program>
+        <Program>entryPoint.sh</Program>
       </ExeHost>
     </EntryPoint>
   </CodePackage>

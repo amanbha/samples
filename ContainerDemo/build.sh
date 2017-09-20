@@ -17,16 +17,16 @@ cp $CurrentDir/WebFront/PackageRoot/ServiceManifest_Linux.xml $WebFrontServicePk
 cp $CurrentDir/WebFront/PackageRoot/Config/Settings.xml $WebFrontServicePkgDir/Config/Settings.xml -f
 
 # Copy the entrypoint for code packages.
-cp $CurrentDir/ContainerAggregator/ContainerAggregator.sh $ContainerAggregatorServicePkgDir/Code/ContainerAggregator.sh -f
-cp $CurrentDir/WebFront/WebFront.sh $WebFrontServicePkgDir/Code/WebFront.sh -f
+cp $CurrentDir/ContainerAggregator/entryPoint.sh $ContainerAggregatorServicePkgDir/Code/entryPoint.sh -f
+cp $CurrentDir/WebFront/entryPoint.sh $WebFrontServicePkgDir/Code/entryPoint.sh -f
 
 
-cd ContainerAggregator.Interfaces
+cd Microsoft.ServiceFabric.Samples.Utility
 dotnet restore -r ubuntu.16.04-x64 -s $HOME/sdk -s https://api.nuget.org/v3/index.json
 dotnet build 
 cd -
 
-cd Microsoft.ServiceFabric.Samples.Utility
+cd ContainerAggregator.Interfaces
 dotnet restore -r ubuntu.16.04-x64 -s $HOME/sdk -s https://api.nuget.org/v3/index.json
 dotnet build 
 cd -

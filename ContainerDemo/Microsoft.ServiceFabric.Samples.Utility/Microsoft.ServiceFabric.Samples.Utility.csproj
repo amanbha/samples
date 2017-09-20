@@ -1,9 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <Description>Liveness Counter Library</Description>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Microsoft.ServiceFabric.Samples.Utility</AssemblyName>
     <PackageId>Microsoft.ServiceFabric.Samples.Utility</PackageId>
     <RootNamespace>Microsoft.ServiceFabric.Samples.Utility</RootNamespace>
-    <AssemblyName>Microsoft.ServiceFabric.Samples.Utility</AssemblyName>
+    <NetStandardImplicitPackageVersion>2.0.0</NetStandardImplicitPackageVersion>
+    <PackageTargetFallback>$(PackageTargetFallback)</PackageTargetFallback>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
     <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
@@ -12,7 +15,6 @@
     <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
     <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
-    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,9 +28,4 @@
     <PackageReference Include="System.Threading.Thread" Version="4.3.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Include="ILivenessCounter.cs" />
-    <Compile Include="LivenessCounter.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
 </Project>

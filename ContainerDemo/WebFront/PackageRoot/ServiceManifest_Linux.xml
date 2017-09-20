@@ -14,7 +14,7 @@
   <CodePackage Name="Code" Version="1.0.0">
     <EntryPoint>
       <ExeHost>
-        <Program>WebFront.sh</Program>
+        <Program>entryPoint.sh</Program>
         <WorkingFolder>CodePackage</WorkingFolder>
         <ConsoleRedirection FileMaxSizeInKb="10000" FileRetentionCount="5"/>
       </ExeHost>
