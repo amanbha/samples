@@ -1,13 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Description>Container aggregator Actor Service</Description>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp1.0</TargetFramework>
     <RootNamespace>ContainerAggregator</RootNamespace>
     <AssemblyName>ContainerAggregator</AssemblyName>
     <OutputType>Exe</OutputType>
     <PackageId>ContainerAggregator</PackageId>
-    <NetStandardImplicitPackageVersion>2.0.0</NetStandardImplicitPackageVersion>
-    <PackageTargetFallback>$(PackageTargetFallback)</PackageTargetFallback>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
     <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
@@ -20,7 +18,9 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.3.0" />
-    <PackageReference Include="Microsoft.ServiceFabric.Actors" Version="3.0.182-preview" />
+    <PackageReference Include="Microsoft.ServiceFabric.Actors" Version="0.9.0-*" />
+    <PackageReference Include="System.Fabric" Version="5.0.1-*" />
+    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="0.9.0-*" />
     <PackageReference Include="System.Collections" Version="4.3.0" />
     <PackageReference Include="System.Linq" Version="4.3.0" />
     <PackageReference Include="System.Runtime" Version="4.3.0" />

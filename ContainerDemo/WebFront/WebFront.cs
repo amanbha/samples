@@ -7,7 +7,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.ServiceFabric.Services.Communication.AspNetCore;
 using Microsoft.ServiceFabric.Services.Communication.Runtime;
 using Microsoft.ServiceFabric.Services.Runtime;
 using Microsoft.ServiceFabric.Samples.Utility;
@@ -93,7 +92,6 @@ namespace WebFront
                                             .ConfigureServices(services => services.AddSingleton<Uri>(this.serviceUri))
                                     .UseContentRoot(Directory.GetCurrentDirectory())
                                     .UseStartup<Startup>()
-                                    .UseServiceFabricIntegration(listener, ServiceFabricIntegrationOptions.None)
                                     .UseUrls(url)
                                     .Build();
                     }))

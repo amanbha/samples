@@ -1,12 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Description>Liveness Counter Library</Description>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netcoreapp1.0</TargetFramework>
     <AssemblyName>Microsoft.ServiceFabric.Samples.Utility</AssemblyName>
     <PackageId>Microsoft.ServiceFabric.Samples.Utility</PackageId>
     <RootNamespace>Microsoft.ServiceFabric.Samples.Utility</RootNamespace>
-    <NetStandardImplicitPackageVersion>2.0.0</NetStandardImplicitPackageVersion>
-    <PackageTargetFallback>$(PackageTargetFallback)</PackageTargetFallback>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
     <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>

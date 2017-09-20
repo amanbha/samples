@@ -22,25 +22,25 @@ cp $CurrentDir/WebFront/entryPoint.sh $WebFrontServicePkgDir/Code/entryPoint.sh 
 
 
 cd Microsoft.ServiceFabric.Samples.Utility
-dotnet restore -r ubuntu.16.04-x64 -s $HOME/sdk -s https://api.nuget.org/v3/index.json
+dotnet restore -s /opt/microsoft/sdk/servicefabric/csharp/packages -s https://api.nuget.org/v3/index.json
 dotnet build 
 cd -
 
 cd ContainerAggregator.Interfaces
-dotnet restore -r ubuntu.16.04-x64 -s $HOME/sdk -s https://api.nuget.org/v3/index.json
+dotnet restore -s /opt/microsoft/sdk/servicefabric/csharp/packages -s https://api.nuget.org/v3/index.json
 dotnet build 
 cd -
 
 cd ContainerAggregator
-dotnet restore -r ubuntu.16.04-x64 -s $HOME/sdk -s https://api.nuget.org/v3/index.json
+dotnet restore -s /opt/microsoft/sdk/servicefabric/csharp/packages -s https://api.nuget.org/v3/index.json
 dotnet build 
-dotnet publish --self-contained -r ubuntu.16.04-x64 -o ../ContainerDemoAppPkg/ContainerAggregatorPkg/Code/
+dotnet publish -o ../ContainerDemoAppPkg/ContainerAggregatorPkg/Code/
 
 cd -
 
 cd WebFront
-dotnet restore -r ubuntu.16.04-x64 -s $HOME/sdk -s https://api.nuget.org/v3/index.json
+dotnet restore -s /opt/microsoft/sdk/servicefabric/csharp/packages -s https://api.nuget.org/v3/index.json
 dotnet build 
-dotnet publish --self-contained -r ubuntu.16.04-x64 -o ../ContainerDemoAppPkg/WebFrontPkg/Code/
+dotnet publish -o ../ContainerDemoAppPkg/WebFrontPkg/Code/
 cd -
 
