@@ -6,8 +6,7 @@
     <RootNamespace>WebFront</RootNamespace>
     <OutputType>Exe</OutputType>
     <PackageId>WebFront</PackageId>
-    <NetStandardImplicitPackageVersion>2.0.0</NetStandardImplicitPackageVersion>
-    <PackageTargetFallback>$(PackageTargetFallback)</PackageTargetFallback>
+    <RuntimeFrameworkVersion>2.0.0</RuntimeFrameworkVersion>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
     <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
@@ -64,7 +63,6 @@
     <PackageReference Include="Microsoft.ServiceFabric" Version="6.1.182-preview" />
     <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.0.182-preview" />
     <PackageReference Include="Microsoft.ServiceFabric.Actors" Version="3.0.182-preview" />
-    <PackageReference Include="Microsoft.ServiceFabric.Data" Version="3.0.182-preview" />
     <PackageReference Include="Microsoft.ServiceFabric.AspNetCore.Kestrel" Version="3.0.182-preview" />
   </ItemGroup>
 </Project>
