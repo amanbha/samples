@@ -13,5 +13,7 @@ namespace Microsoft.ServiceFabric.Samples.Utility
         long GetLivingCount();
 
         List<KeyValuePair<T, long>> GetKeyValues();
+
+        bool TryGetValueForKey(T key, out long value);
     }
 }

@@ -50,6 +50,19 @@ namespace Microsoft.ServiceFabric.Samples.Utility
             return items;
         }        
 
+        public bool TryGetValueForKey(T key, out long value)
+        {
+            value = 0;
+            
+            if(!livenessEntries.ContainsKey(key))
+            {
+                return false;
+            }
+            
+            value = livenessEntries[key].NumAlive;
+            return true;
+        }
+
         private void ExtendExpiration(T key, long numberOfAliveItems)
         {
             bool addCalled = false;
