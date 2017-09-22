@@ -123,7 +123,10 @@
 			var countHistory = [0,0,0,0,0,0,0,0,0,0];
 			var lastValue = 0;
 			var graph,x,y,line;
-			var timer;
+			var timer;			
+			var limit = 1000000; //NEW
+			var maxHit = 0;		 //NEW
+			var currentCount = 0; //NEW
 			init();
 			animate();
 			updateStars();
@@ -133,7 +136,7 @@
 				var height = 120;
 				graph = d3.select("#historyChart").append("svg:svg").attr("width", "100%").attr("height", "100%");
 				x = d3.scale.linear().domain([0, 10]).range([0, width]); 
-				y = d3.scale.linear().domain([0, 1000000]).range([0, height]);
+				y = d3.scale.linear().domain([0, limit * 1.1]).range([0, height]);	//NEW
 				line = d3.svg.line()
 					.x(function(d,i) { 
 						return x(i); 
@@ -157,6 +160,12 @@
 			}
 			function changeTargetCounts(a)
 			{				
+				if (a > maxHit)		//NEW
+					maxHit = a;		//NEW
+				else				//NEW
+					a = maxHit;		//NEW
+				currentCount  = a;	//NEW
+
 				var scaled = a / particleScale;
 				for (var i = 0; i < states.length; i++){
 					if (i <= scaled)
@@ -274,9 +283,18 @@
 				document.body.appendChild( renderer.domElement );
 				
 				timer = setInterval(updatePageContent, 5000);
+				setTimeout(forceSet, 120000);	//NEW
 
 				window.addEventListener( 'resize', onWindowResize, false );
 			}
+			function forceSet()					//NEW
+			{									//NEW
+				setInterval(increment, 5000);	//NEW
+			}									//NEW
+			function increment(){				//NEW		
+				if (currentCount < limit)					//NEW
+					changeTargetCounts(currentCount + Math.random()*50000+50000);		//NEW				
+			}									//NEW
 			function updateStars()
 			{
 				if (particleSystem  == null){
@@ -394,7 +412,10 @@
    				.done(function (containerCountJSON) {
 					var containerCount = JSON.parse(containerCountJSON);
         			changeTargetCounts(containerCount);
-   				})				
+   				})
+				.fail(function(){					
+					changeTargetCounts(Math.random()*limit * 0.5);
+				})
 			}
         </script>
     </body>
