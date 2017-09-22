@@ -43,8 +43,8 @@ namespace WebFront
         public WebFront(StatelessServiceContext context)
             : base(context)
         {
-            this.counter = new LivenessCounter<string>(expirationIntervalInSeconds, fuzzIntervalInSeconds);
             this.LoadLiveCounterSettings();
+            this.counter = new LivenessCounter<string>(expirationIntervalInSeconds, fuzzIntervalInSeconds);
             nodeName = context.NodeContext.NodeName;
             serviceUri = ActorNameFormat.GetFabricServiceUri(typeof(IContainerAggregatorActor));
             proxy = ActorServiceProxy.Create<IContainerAggregator>(serviceUri, 0);
