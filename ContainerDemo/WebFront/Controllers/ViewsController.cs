@@ -73,6 +73,16 @@ namespace WebFront.Controllers
             proxy.ReportAlive(id, 0, ignoreOtherUpdatesForMins).GetAwaiter().GetResult();
             return Ok();
         }
+
+        [HttpGet()]
+        [Route("updatelogs")]
+        public JsonResult getUpdateLogs()
+        {   
+            Console.WriteLine("Serving up getUpdateLogs");
+            var updateLogEntries = proxy.GetUpdateLogEntries().GetAwaiter().GetResult();
+
+            return Json(updateLogEntries);
+        }
     }
 }
 

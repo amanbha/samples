@@ -15,6 +15,8 @@ namespace ContainerAggregator.Interfaces
         Task ReportAlive(string nodeName, long aliveContainerCount, int ignoreOtherUpdatesForMins);
 
         Task<List<KeyValuePair<string, long>>> GetKeyValues();
+
+        Task<Queue<KeyValuePair<string, string>>> GetUpdateLogEntries();
     }
 
     public interface IContainerAggregatorActor : IActor
