@@ -64,6 +64,15 @@ namespace WebFront.Controllers
             Console.WriteLine($"Got ping with id: {id}, hostInfo: {host.ToString()}");
             return Ok();
         }
+
+        // DELETE api/values
+        [HttpDelete]
+        public ActionResult Delete([FromQuery]string id, [FromQuery]int ignoreOtherUpdatesForMins)
+        {
+            // the DELETE is for a node to signal failover and must set the count to 0 for specified mins and ignore actual updates from node.
+            proxy.ReportAlive(id, 0, ignoreOtherUpdatesForMins).GetAwaiter().GetResult();
+            return Ok();
+        }
     }
 }
 

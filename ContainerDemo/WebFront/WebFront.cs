@@ -63,7 +63,7 @@ namespace WebFront
         {
             try
             {
-                proxy.ReportAlive(nodeName, this.counter.GetLivingCount()).GetAwaiter().GetResult();
+                proxy.ReportAlive(nodeName, this.counter.GetLivingCount(), 0).GetAwaiter().GetResult();
             }
             catch (Exception)
             {

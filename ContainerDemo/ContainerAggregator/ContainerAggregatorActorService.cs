@@ -2,6 +2,7 @@
 using System.Fabric;
 using ContainerAggregator.Interfaces;
 using System;
+using System.Collections.Concurrent;
 using System.Threading.Tasks;
 using System.Threading;
 using Microsoft.ServiceFabric.Actors.Query;
@@ -19,6 +20,7 @@ namespace ContainerAggregator
         private readonly string livenessCounterSettingSectionName = "LivenessCounterSettings";
         private readonly string expirationIntervalInSecondsKeyName = "ExpirationIntervalInSeconds";
         private readonly string fuzzIntervalInSecondsKeyName = "FuzzIntervalInSeconds";
+        private readonly ConcurrentDictionary<string, Timer> ignoreOtherUpdatesEntries;
 
         private int expirationIntervalInSeconds = 30;
         private int fuzzIntervalInSeconds = 5;
@@ -30,6 +32,7 @@ namespace ContainerAggregator
         {
             this.LoadLiveCounterSettings();
             this.containerLivenessCounter = new LivenessCounter<string>(expirationIntervalInSeconds, fuzzIntervalInSeconds);
+            this.ignoreOtherUpdatesEntries = new ConcurrentDictionary<string, Timer>();
         }
 
         protected override async Task RunAsync(CancellationToken cancellationToken)
@@ -74,10 +77,23 @@ namespace ContainerAggregator
             return Task.FromResult(containerLivenessCounter.GetKeyValues());
         }
 
-        async Task IContainerAggregator.ReportAlive(string nodeName, long aliveContainerCount)
+        async Task IContainerAggregator.ReportAlive(string nodeName, long aliveContainerCount, int ignoreOtherUpdatesForMins)
         {
-            await this.SaveCount(nodeName, aliveContainerCount);
-            containerLivenessCounter.ReportAlive(nodeName, aliveContainerCount);
+            // If an entry was made to ignore further updates, do not change it.
+            if(!this.ignoreOtherUpdatesEntries.ContainsKey(nodeName))
+            {
+                await this.SaveCount(nodeName, aliveContainerCount);
+                containerLivenessCounter.ReportAlive(nodeName, aliveContainerCount);
+
+                if(ignoreOtherUpdatesForMins > 0)
+                {
+                   this.ignoreOtherUpdatesEntries.AddOrUpdate(
+                       nodeName, 
+                       this.CreateExpiryTimer(nodeName, ignoreOtherUpdatesForMins), 
+                       (k, v) => { return this.CreateExpiryTimer(nodeName, ignoreOtherUpdatesForMins);}
+                       );
+                }
+            }
         }
 
         private Task SaveCount(string nodeName, long aliveContainerCount)
@@ -114,6 +130,25 @@ namespace ContainerAggregator
                     var value = section.Parameters[fuzzIntervalInSecondsKeyName].Value.Trim();
                     this.fuzzIntervalInSeconds = int.Parse(value);
                 }
+            }
+        }
+
+        private Timer CreateExpiryTimer(string key, int dueTimeInMins)
+        {
+            return new Timer(
+                this.OnEntryExpired, 
+                key,
+                TimeSpan.FromMinutes(dueTimeInMins), 
+                Timeout.InfiniteTimeSpan);
+        }
+
+        private void OnEntryExpired(object state)
+        {
+            Timer timer;
+
+            if(ignoreOtherUpdatesEntries.TryRemove((string)state, out timer))
+            {
+                timer.Change(Timeout.InfiniteTimeSpan, Timeout.InfiniteTimeSpan);
             }
         }
     }

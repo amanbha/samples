@@ -12,7 +12,7 @@ namespace ContainerAggregator.Interfaces
     {
         Task<long> GetLivingCount();
 
-        Task ReportAlive(string nodeName, long aliveContainerCount);
+        Task ReportAlive(string nodeName, long aliveContainerCount, int ignoreOtherUpdatesForMins);
 
         Task<List<KeyValuePair<string, long>>> GetKeyValues();
     }
