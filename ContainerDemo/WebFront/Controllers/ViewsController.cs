@@ -81,7 +81,7 @@ namespace WebFront.Controllers
             Console.WriteLine("Serving up getUpdateLogs");
             var updateLogEntries = proxy.GetUpdateLogEntries().GetAwaiter().GetResult();
 
-            return Json(updateLogEntries);
+            return Json(updateLogEntries.Reverse());
         }
     }
 }

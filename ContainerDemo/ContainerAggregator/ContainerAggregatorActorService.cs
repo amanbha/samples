@@ -28,7 +28,7 @@ namespace ContainerAggregator
         private int fuzzIntervalInSeconds = 5;
 
         private const int MaxItemsToReturn = 10000;
-        private const int MaxUpdateLogEntriesToKeep = 1000;
+        private const int MaxUpdateLogEntriesToKeep = 500;
 
         public ContainerAggregatorActorService(StatefulServiceContext context, ActorTypeInformation actorTypeInfo)
             : base(context, actorTypeInfo)
