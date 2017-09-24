@@ -10,6 +10,7 @@
     <Parameter Name="ContainerAggregatorActorService_TargetReplicaSetSize" DefaultValue="1" />
     <Parameter Name="ContainerAggregatorActorService_FuzzIntervalInSeconds" DefaultValue="10" />
     <Parameter Name="ContainerAggregatorActorService_ExpirationIntervalInSeconds" DefaultValue="20" />
+    <Parameter Name="ContainerAggregatorActorService_PlacementConstraint" DefaultValue="(NodeType==sf)" />
   </Parameters>
   <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion 
        should match the Name and Version attributes of the ServiceManifest element defined in the 
@@ -45,7 +46,7 @@
     <Service Name="ContainerAggregatorActorService" GeneratedIdRef="b3c9f058-e5d9-47a8-8fb1-ad5387f3a73f|None">
       <StatefulService ServiceTypeName="ContainerAggregatorActorServiceType" TargetReplicaSetSize="[ContainerAggregatorActorService_TargetReplicaSetSize]" MinReplicaSetSize="[ContainerAggregatorActorService_MinReplicaSetSize]">
         <UniformInt64Partition PartitionCount="[ContainerAggregatorActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
-        <PlacementConstraints>(NodeType==sf)</PlacementConstraints>
+        <PlacementConstraints>[ContainerAggregatorActorService_PlacementConstraint]</PlacementConstraints>
       </StatefulService>
     </Service>
     <!-- WebFront service is created explicitly by scripts. -->

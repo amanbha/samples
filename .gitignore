@@ -6,6 +6,8 @@
 /ContainerDemo/**/obj/**/*
 /ContainerDemo/**/bin/**/*
 /ContainerDemo/**/gen/**/*
+/ContainerDemo/packages/**/*
+/ContainerDemo/.vs/**/*
 
 # MSBuild's log file
 msbuild.log
